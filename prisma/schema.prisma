@@ -1,0 +1,295 @@
+// Prisma schema for Study Loop PostgreSQL Database
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id                  String               @id @default(uuid())
+  email               String               @unique
+  passwordHash        String
+  name                String
+  avatarUrl           String?
+  timezone            String               @default("UTC")
+  createdAt           DateTime             @default(now())
+  updatedAt           DateTime             @updatedAt
+  settings            UserSettings?
+  reminderPreference  ReminderPreference?
+  exams               Exam[]
+  decks               StudyDeck[]
+  noteDocuments       NoteDocument[]
+  quizAttempts        QuizAttempt[]
+  topicMasteries      TopicMastery[]
+  flashcardReviews    FlashcardReview[]
+  passwordResetTokens PasswordResetToken[]
+
+  @@map("users")
+}
+
+model UserSettings {
+  id                   String   @id @default(uuid())
+  userId               String   @unique
+  user                 User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  dailyStudyGoalMinutes Int     @default(45)
+  notificationsEnabled Boolean  @default(true)
+  preferredStudyTime   String   @default("18:00")
+  theme                String   @default("light")
+  createdAt            DateTime @default(now())
+  updatedAt            DateTime @updatedAt
+
+  @@map("user_settings")
+}
+
+model ReminderPreference {
+  id                 String   @id @default(uuid())
+  userId             String   @unique
+  user               User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  browserEnabled     Boolean  @default(false)
+  emailEnabled       Boolean  @default(true)
+  scheduledHour      Int      @default(18)
+  scheduledMinute    Int      @default(0)
+  daysOfWeek         String   @default("1,2,3,4,5") // Mon-Fri
+  lastNotifiedAt     DateTime?
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+
+  @@map("reminder_preferences")
+}
+
+model Exam {
+  id                String          @id @default(uuid())
+  userId            String
+  user              User            @relation(fields: [userId], references: [id], onDelete: Cascade)
+  title             String
+  subject           String
+  targetDate        DateTime
+  dailyMinutes      Int             @default(60)
+  availableDays     String          @default("Mon,Tue,Wed,Thu,Fri,Sat")
+  status            String          @default("in_progress") // in_progress, completed, archived
+  notes             String?
+  createdAt         DateTime        @default(now())
+  updatedAt         DateTime        @updatedAt
+  topics            SyllabusTopic[]
+  studySessions     StudySession[]
+
+  @@map("exams")
+}
+
+model SyllabusTopic {
+  id                String          @id @default(uuid())
+  examId            String
+  exam              Exam            @relation(fields: [examId], references: [id], onDelete: Cascade)
+  name              String
+  difficulty        String          @default("medium") // easy, medium, hard
+  weightPercentage  Int             @default(10)
+  completed         Boolean         @default(false)
+  createdAt         DateTime        @default(now())
+  updatedAt         DateTime        @updatedAt
+  studySessions     StudySession[]
+  topicMasteries    TopicMastery[]
+
+  @@map("syllabus_topics")
+}
+
+model StudySession {
+  id                String         @id @default(uuid())
+  examId            String
+  exam              Exam           @relation(fields: [examId], references: [id], onDelete: Cascade)
+  topicId           String?
+  topic             SyllabusTopic? @relation(fields: [topicId], references: [id], onDelete: SetNull)
+  scheduledDate     DateTime
+  durationMinutes   Int            @default(45)
+  sessionType       String         @default("study") // study, revision, practice_quiz, final_review
+  status            String         @default("pending") // pending, completed, skipped
+  completedAt       DateTime?
+  notes             String?
+  createdAt         DateTime       @default(now())
+  updatedAt         DateTime       @updatedAt
+
+  @@map("study_sessions")
+}
+
+model NoteDocument {
+  id                String       @id @default(uuid())
+  userId            String
+  user              User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  originalName      String
+  mimeType          String
+  fileSizeBytes     Int
+  extractedText     String       @db.Text
+  wordCount         Int          @default(0)
+  createdAt         DateTime     @default(now())
+  updatedAt         DateTime     @updatedAt
+  decks             StudyDeck[]
+
+  @@map("note_documents")
+}
+
+model StudyDeck {
+  id                String         @id @default(uuid())
+  userId            String
+  user              User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  noteDocumentId    String?
+  noteDocument      NoteDocument?  @relation(fields: [noteDocumentId], references: [id], onDelete: SetNull)
+  title             String
+  subject           String
+  description       String?
+  isAiGenerated     Boolean        @default(true)
+  isDemoMode        Boolean        @default(false)
+  createdAt         DateTime       @default(now())
+  updatedAt         DateTime       @updatedAt
+  summary           Summary?
+  flashcards        Flashcard[]
+  questions         Question[]
+  quizAttempts      QuizAttempt[]
+  shareLinks        ShareLink[]
+
+  @@map("study_decks")
+}
+
+model Summary {
+  id                String     @id @default(uuid())
+  deckId            String     @unique
+  deck              StudyDeck  @relation(fields: [deckId], references: [id], onDelete: Cascade)
+  overview          String     @db.Text
+  keyConceptsJson   String     @db.Text // JSON array of { title, explanation }
+  definitionsJson   String     @db.Text // JSON array of { term, definition }
+  mainPointsJson    String     @db.Text // JSON array of strings
+  revisionHighlightsJson String @db.Text // JSON array of strings
+  createdAt         DateTime   @default(now())
+  updatedAt         DateTime   @updatedAt
+
+  @@map("summaries")
+}
+
+model Flashcard {
+  id                String            @id @default(uuid())
+  deckId            String
+  deck              StudyDeck         @relation(fields: [deckId], references: [id], onDelete: Cascade)
+  front             String            @db.Text
+  back              String            @db.Text
+  topic             String
+  orderIndex        Int               @default(0)
+  createdAt         DateTime          @default(now())
+  updatedAt         DateTime          @updatedAt
+  reviews           FlashcardReview[]
+
+  @@map("flashcards")
+}
+
+model FlashcardReview {
+  id                String    @id @default(uuid())
+  userId            String
+  user              User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  flashcardId       String
+  flashcard         Flashcard @relation(fields: [flashcardId], references: [id], onDelete: Cascade)
+  knewIt            Boolean
+  reviewedAt        DateTime  @default(now())
+
+  @@map("flashcard_reviews")
+}
+
+model Question {
+  id                String           @id @default(uuid())
+  deckId            String
+  deck              StudyDeck        @relation(fields: [deckId], references: [id], onDelete: Cascade)
+  prompt            String           @db.Text
+  explanation       String           @db.Text
+  topic             String
+  difficulty        String           @default("medium") // easy, medium, hard
+  orderIndex        Int              @default(0)
+  createdAt         DateTime         @default(now())
+  updatedAt         DateTime         @updatedAt
+  options           QuestionOption[]
+  quizAnswers       QuizAnswer[]
+
+  @@map("questions")
+}
+
+model QuestionOption {
+  id                String       @id @default(uuid())
+  questionId        String
+  question          Question     @relation(fields: [questionId], references: [id], onDelete: Cascade)
+  text              String
+  isCorrect         Boolean      @default(false)
+  orderIndex        Int          @default(0)
+  quizAnswers       QuizAnswer[]
+
+  @@map("question_options")
+}
+
+model QuizAttempt {
+  id                String       @id @default(uuid())
+  userId            String
+  user              User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  deckId            String
+  deck              StudyDeck    @relation(fields: [deckId], references: [id], onDelete: Cascade)
+  score             Int
+  totalQuestions    Int
+  percentage        Float
+  completedAt       DateTime     @default(now())
+  timeSpentSeconds  Int          @default(0)
+  answers           QuizAnswer[]
+
+  @@map("quiz_attempts")
+}
+
+model QuizAnswer {
+  id                String          @id @default(uuid())
+  attemptId         String
+  attempt           QuizAttempt     @relation(fields: [attemptId], references: [id], onDelete: Cascade)
+  questionId        String
+  question          Question        @relation(fields: [questionId], references: [id], onDelete: Cascade)
+  selectedOptionId  String?
+  selectedOption    QuestionOption? @relation(fields: [selectedOptionId], references: [id], onDelete: SetNull)
+  isCorrect         Boolean
+  timeSpentSeconds  Int             @default(0)
+
+  @@map("quiz_answers")
+}
+
+model TopicMastery {
+  id                String         @id @default(uuid())
+  userId            String
+  user              User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  syllabusTopicId   String?
+  syllabusTopic     SyllabusTopic? @relation(fields: [syllabusTopicId], references: [id], onDelete: SetNull)
+  topicName         String
+  masteryPercentage Float          @default(0.0)
+  totalAnswered     Int            @default(0)
+  totalCorrect      Int            @default(0)
+  lastPracticedAt   DateTime?
+  updatedAt         DateTime       @updatedAt
+
+  @@unique([userId, topicName])
+  @@map("topic_masteries")
+}
+
+model ShareLink {
+  id                String    @id @default(uuid())
+  deckId            String
+  deck              StudyDeck @relation(fields: [deckId], references: [id], onDelete: Cascade)
+  shareToken        String    @unique
+  isActive          Boolean   @default(true)
+  viewsCount        Int       @default(0)
+  createdAt         DateTime  @default(now())
+  expiresAt         DateTime?
+
+  @@map("share_links")
+}
+
+model PasswordResetToken {
+  id                String    @id @default(uuid())
+  userId            String
+  user              User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  token             String    @unique
+  expiresAt         DateTime
+  used              Boolean   @default(false)
+  createdAt         DateTime  @default(now())
+
+  @@map("password_reset_tokens")
+}

@@ -1,0 +1,694 @@
+{
+  "users": [
+    {
+      "id": "user_demo_student_01",
+      "email": "alex@studyloop.edu",
+      "passwordHash": "63539ef02684b11c77948ab345bf970ed0c5d1dfe7c108709beb1add4b01e9c3",
+      "name": "Alex Rivera",
+      "avatarUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80",
+      "timezone": "America/New_York",
+      "createdAt": "2026-09-30T06:43:17.462Z",
+      "updatedAt": "2026-10-14T06:43:17.462Z"
+    }
+  ],
+  "userSettings": [
+    {
+      "id": "set_1",
+      "userId": "user_demo_student_01",
+      "dailyStudyGoalMinutes": 45,
+      "notificationsEnabled": true,
+      "preferredStudyTime": "18:00",
+      "theme": "light",
+      "createdAt": "2026-10-14T06:43:17.462Z",
+      "updatedAt": "2026-10-14T06:43:17.462Z"
+    }
+  ],
+  "reminderPreferences": [
+    {
+      "id": "rem_1",
+      "userId": "user_demo_student_01",
+      "browserEnabled": true,
+      "emailEnabled": true,
+      "scheduledHour": 18,
+      "scheduledMinute": 30,
+      "daysOfWeek": "1,2,3,4,5,6",
+      "createdAt": "2026-10-14T06:43:17.462Z",
+      "updatedAt": "2026-10-14T06:43:17.462Z"
+    }
+  ],
+  "exams": [
+    {
+      "id": "exam_demo_cs301",
+      "userId": "user_demo_student_01",
+      "title": "Midterm: Distributed Systems & Cloud Architecture",
+      "subject": "Computer Science (CS301)",
+      "targetDate": "2026-10-21T06:43:17.462Z",
+      "dailyMinutes": 60,
+      "availableDays": [
+        "Mon",
+        "Tue",
+        "Wed",
+        "Thu",
+        "Fri",
+        "Sat"
+      ],
+      "status": "in_progress",
+      "notes": "Covers Chapters 1-6. Key focus on Raft and Consistent Hashing.",
+      "createdAt": "2026-10-09T06:43:17.462Z",
+      "updatedAt": "2026-10-14T06:43:17.462Z"
+    }
+  ],
+  "syllabusTopics": [
+    {
+      "id": "top_1",
+      "examId": "exam_demo_cs301",
+      "name": "CAP Theorem & PACELC",
+      "difficulty": "medium",
+      "weightPercentage": 20,
+      "completed": true,
+      "createdAt": "2026-10-09T06:43:17.455Z",
+      "updatedAt": "2026-10-14T06:43:17.457Z"
+    },
+    {
+      "id": "top_2",
+      "examId": "exam_demo_cs301",
+      "name": "Consensus & Raft Protocol",
+      "difficulty": "hard",
+      "weightPercentage": 25,
+      "completed": false,
+      "createdAt": "2026-10-09T06:43:17.457Z",
+      "updatedAt": "2026-10-14T06:43:17.457Z"
+    },
+    {
+      "id": "top_3",
+      "examId": "exam_demo_cs301",
+      "name": "Consistent Hashing & DHTs",
+      "difficulty": "hard",
+      "weightPercentage": 20,
+      "completed": false,
+      "createdAt": "2026-10-09T06:43:17.457Z",
+      "updatedAt": "2026-10-14T06:43:17.457Z"
+    },
+    {
+      "id": "top_4",
+      "examId": "exam_demo_cs301",
+      "name": "Vector Clocks & Logical Time",
+      "difficulty": "medium",
+      "weightPercentage": 15,
+      "completed": true,
+      "createdAt": "2026-10-09T06:43:17.457Z",
+      "updatedAt": "2026-10-14T06:43:17.457Z"
+    },
+    {
+      "id": "top_5",
+      "examId": "exam_demo_cs301",
+      "name": "MapReduce & Distributed Compute",
+      "difficulty": "easy",
+      "weightPercentage": 20,
+      "completed": false,
+      "createdAt": "2026-10-09T06:43:17.457Z",
+      "updatedAt": "2026-10-14T06:43:17.457Z"
+    }
+  ],
+  "studySessions": [
+    {
+      "id": "sess_1",
+      "examId": "exam_demo_cs301",
+      "topicId": "top_1",
+      "topicName": "CAP Theorem & PACELC",
+      "scheduledDate": "2026-10-12",
+      "durationMinutes": 45,
+      "sessionType": "study",
+      "status": "completed",
+      "completedAt": "2026-10-12T06:43:17.458Z",
+      "createdAt": "2026-10-14T06:43:17.458Z",
+      "updatedAt": "2026-10-14T06:43:17.458Z"
+    },
+    {
+      "id": "sess_2",
+      "examId": "exam_demo_cs301",
+      "topicId": "top_4",
+      "topicName": "Vector Clocks & Logical Time",
+      "scheduledDate": "2026-10-13",
+      "durationMinutes": 45,
+      "sessionType": "study",
+      "status": "completed",
+      "completedAt": "2026-10-13T06:43:17.458Z",
+      "createdAt": "2026-10-14T06:43:17.458Z",
+      "updatedAt": "2026-10-14T06:43:17.458Z"
+    },
+    {
+      "id": "sess_3",
+      "examId": "exam_demo_cs301",
+      "topicId": "top_2",
+      "topicName": "Consensus & Raft Protocol",
+      "scheduledDate": "2026-10-14",
+      "durationMinutes": 60,
+      "sessionType": "study",
+      "status": "pending",
+      "notes": "Focus on leader election timeouts and log replication RPCs",
+      "createdAt": "2026-10-14T06:43:17.458Z",
+      "updatedAt": "2026-10-14T06:43:17.458Z"
+    },
+    {
+      "id": "sess_4",
+      "examId": "exam_demo_cs301",
+      "topicId": "top_3",
+      "topicName": "Consistent Hashing & DHTs",
+      "scheduledDate": "2026-10-15",
+      "durationMinutes": 45,
+      "sessionType": "study",
+      "status": "pending",
+      "createdAt": "2026-10-14T06:43:17.458Z",
+      "updatedAt": "2026-10-14T06:43:17.458Z"
+    },
+    {
+      "id": "sess_5",
+      "examId": "exam_demo_cs301",
+      "topicId": "top_2",
+      "topicName": "Consensus & Raft Protocol",
+      "scheduledDate": "2026-10-16",
+      "durationMinutes": 45,
+      "sessionType": "revision",
+      "status": "pending",
+      "notes": "Weak topic revision from quiz errors",
+      "createdAt": "2026-10-14T06:43:17.458Z",
+      "updatedAt": "2026-10-14T06:43:17.458Z"
+    },
+    {
+      "id": "sess_6",
+      "examId": "exam_demo_cs301",
+      "scheduledDate": "2026-10-18",
+      "durationMinutes": 60,
+      "sessionType": "practice_quiz",
+      "status": "pending",
+      "notes": "Full mock timed practice quiz",
+      "createdAt": "2026-10-14T06:43:17.458Z",
+      "updatedAt": "2026-10-14T06:43:17.458Z"
+    },
+    {
+      "id": "sess_7",
+      "examId": "exam_demo_cs301",
+      "scheduledDate": "2026-10-20",
+      "durationMinutes": 90,
+      "sessionType": "final_review",
+      "status": "pending",
+      "notes": "High-yield formula sheet and definition speed-run",
+      "createdAt": "2026-10-14T06:43:17.458Z",
+      "updatedAt": "2026-10-14T06:43:17.458Z"
+    }
+  ],
+  "noteDocuments": [
+    {
+      "id": "doc_1",
+      "userId": "user_demo_student_01",
+      "originalName": "CS301_Distributed_Systems_Lecture_Notes.pdf",
+      "mimeType": "application/pdf",
+      "fileSizeBytes": 245000,
+      "extractedText": "Lecture notes covering CAP theorem, PACELC model, Raft consensus protocol, vector clocks, consistent hashing with virtual nodes, and distributed 2PC transactions.",
+      "wordCount": 1420,
+      "createdAt": "2026-10-09T06:43:17.462Z",
+      "updatedAt": "2026-10-14T06:43:17.462Z"
+    }
+  ],
+  "studyDecks": [
+    {
+      "id": "deck_demo_distributed_sys",
+      "userId": "user_demo_student_01",
+      "noteDocumentId": "doc_1",
+      "title": "Distributed Systems & Cloud Architecture",
+      "subject": "Computer Science",
+      "description": "Comprehensive high-yield notes covering CAP, Raft, Consistent Hashing, and 2PC.",
+      "isAiGenerated": true,
+      "isDemoMode": false,
+      "createdAt": "2026-10-09T06:43:17.462Z",
+      "updatedAt": "2026-10-14T06:43:17.462Z"
+    }
+  ],
+  "summaries": [
+    {
+      "id": "sum_1",
+      "deckId": "deck_demo_distributed_sys",
+      "overview": "Comprehensive study notes on modern Distributed Systems design patterns, fault-tolerant consensus mechanisms, partitioning algorithms, and high-throughput data processing.",
+      "keyConcepts": [
+        {
+          "title": "The CAP Theorem",
+          "explanation": "A distributed data store can simultaneously provide at most two of three guarantees: Consistency, Availability, and Partition Tolerance. In real networks, P is mandatory, forcing a trade-off between C and A."
+        },
+        {
+          "title": "Raft Consensus Protocol",
+          "explanation": "A consensus algorithm designed to be understandable, decomposing consensus into leader election, log replication, and safety. A node can be Leader, Follower, or Candidate."
+        },
+        {
+          "title": "Consistent Hashing",
+          "explanation": "Distributes keys across a ring topology using hash ranges with virtual nodes. When nodes join or leave, only K/N keys need to be remapped on average."
+        },
+        {
+          "title": "Vector Clocks",
+          "explanation": "An algorithm for generating a partial ordering of events in a distributed system and detecting causality violations or concurrent conflicts without synchronized physical wall clocks."
+        }
+      ],
+      "definitions": [
+        {
+          "term": "Split-Brain",
+          "definition": "A condition where a distributed cluster divides into two or more independent partitions, each believing it is the sole active cluster."
+        },
+        {
+          "term": "Linearizability",
+          "definition": "The strongest consistency model, guaranteeing that all operations appear to execute atomically at a specific point in time between their invocation and response."
+        },
+        {
+          "term": "Virtual Nodes",
+          "definition": "Technique in consistent hashing where each physical server maps to multiple tokens across the hash ring to guarantee uniform key distribution."
+        }
+      ],
+      "mainPoints": [
+        "Network partitions cannot be avoided; systems must explicitly design their failover and degradation modes.",
+        "Raft achieves fault tolerance as long as a quorum (strict majority: (N/2)+1) of nodes remains operational.",
+        "Eventual consistency guarantees that all replicas will converge given sufficient time without new updates.",
+        "Two-Phase Commit (2PC) is a blocking atomic commit protocol, vulnerable if the coordinator crashes during the prepare phase."
+      ],
+      "revisionHighlights": [
+        "Quorum formula: Read quorum (R) + Write quorum (W) > Total nodes (N) guarantees strong consistency.",
+        "Heartbeat timeout in Raft is typically 150ms-300ms randomized to avoid split votes.",
+        "PACELC extends CAP: If there is a Partition, trade Availability vs Consistency; Else, trade Latency vs Consistency."
+      ],
+      "createdAt": "2026-10-14T06:43:17.462Z",
+      "updatedAt": "2026-10-14T06:43:17.462Z"
+    }
+  ],
+  "flashcards": [
+    {
+      "id": "fc_1",
+      "deckId": "deck_demo_distributed_sys",
+      "front": "What does the CAP Theorem state for networked distributed systems?",
+      "back": "Because physical network partitions (P) are inevitable in real networks, a system can only guarantee either strict Consistency (C) or Availability (A) during network failure, never both.",
+      "topic": "CAP Theorem & PACELC",
+      "orderIndex": 0,
+      "createdAt": "2026-10-14T06:43:17.462Z",
+      "updatedAt": "2026-10-14T06:43:17.462Z"
+    },
+    {
+      "id": "fc_2",
+      "deckId": "deck_demo_distributed_sys",
+      "front": "What are the three states a node can have in the Raft consensus algorithm?",
+      "back": "Follower (passive, responds to RPCs), Candidate (starts election after heartbeat timeout), and Leader (handles client writes and dispatches AppendEntries RPCs).",
+      "topic": "Consensus & Raft Protocol",
+      "orderIndex": 1,
+      "createdAt": "2026-10-14T06:43:17.462Z",
+      "updatedAt": "2026-10-14T06:43:17.462Z"
+    },
+    {
+      "id": "fc_3",
+      "deckId": "deck_demo_distributed_sys",
+      "front": "Why does Consistent Hashing use \"Virtual Nodes\"?",
+      "back": "To prevent \"hot spots\" and ensure uniform distribution of keys across physical nodes, especially when server hardware capacities differ or the number of physical nodes is small.",
+      "topic": "Consistent Hashing & DHTs",
+      "orderIndex": 2,
+      "createdAt": "2026-10-14T06:43:17.462Z",
+      "updatedAt": "2026-10-14T06:43:17.462Z"
+    },
+    {
+      "id": "fc_4",
+      "deckId": "deck_demo_distributed_sys",
+      "front": "What is the main drawback of the Two-Phase Commit (2PC) protocol?",
+      "back": "It is a blocking protocol. If the coordinator crashes after nodes have acknowledged the \"Prepare\" phase, participants must wait indefinitely, holding database row locks.",
+      "topic": "Distributed Transactions",
+      "orderIndex": 3,
+      "createdAt": "2026-10-14T06:43:17.462Z",
+      "updatedAt": "2026-10-14T06:43:17.462Z"
+    },
+    {
+      "id": "fc_5",
+      "deckId": "deck_demo_distributed_sys",
+      "front": "In Dynamo-style storage, how do R, W, and N relate to strong consistency?",
+      "back": "When R + W > N (where N is replication factor, R is read quorum, and W is write quorum), any read set overlaps with at least one node containing the latest write.",
+      "topic": "Vector Clocks & Logical Time",
+      "orderIndex": 4,
+      "createdAt": "2026-10-14T06:43:17.462Z",
+      "updatedAt": "2026-10-14T06:43:17.462Z"
+    },
+    {
+      "id": "fc_6",
+      "deckId": "deck_demo_distributed_sys",
+      "front": "What does the PACELC theorem add to the CAP theorem?",
+      "back": "If Partition (P), trade Availability (A) vs Consistency (C); Else (E), when running normally, trade Latency (L) vs Consistency (C).",
+      "topic": "CAP Theorem & PACELC",
+      "orderIndex": 5,
+      "createdAt": "2026-10-14T06:43:17.462Z",
+      "updatedAt": "2026-10-14T06:43:17.462Z"
+    }
+  ],
+  "flashcardReviews": [
+    {
+      "id": "rev_1",
+      "userId": "user_demo_student_01",
+      "flashcardId": "fc_1",
+      "knewIt": true,
+      "reviewedAt": "2026-10-12T06:43:17.462Z"
+    },
+    {
+      "id": "rev_2",
+      "userId": "user_demo_student_01",
+      "flashcardId": "fc_2",
+      "knewIt": false,
+      "reviewedAt": "2026-10-13T06:43:17.462Z"
+    },
+    {
+      "id": "rev_3",
+      "userId": "user_demo_student_01",
+      "flashcardId": "fc_3",
+      "knewIt": false,
+      "reviewedAt": "2026-10-13T06:43:17.462Z"
+    },
+    {
+      "id": "rev_4",
+      "userId": "user_demo_student_01",
+      "flashcardId": "fc_4",
+      "knewIt": true,
+      "reviewedAt": "2026-10-13T06:43:17.462Z"
+    },
+    {
+      "id": "rev_5",
+      "userId": "user_demo_student_01",
+      "flashcardId": "fc_5",
+      "knewIt": true,
+      "reviewedAt": "2026-10-14T06:43:17.462Z"
+    }
+  ],
+  "questions": [
+    {
+      "id": "q_1",
+      "deckId": "deck_demo_distributed_sys",
+      "prompt": "Under the CAP Theorem, when an unavoidable network partition separates a cluster into two disconnected segments, what must an CP system choose to do?",
+      "explanation": "In a CP (Consistent & Partition Tolerant) system, nodes on a partition that cannot achieve a verified majority quorum reject incoming writes and reads to avoid split-brain and stale reads, sacrificing availability.",
+      "topic": "CAP Theorem & PACELC",
+      "difficulty": "medium",
+      "orderIndex": 0,
+      "options": [
+        {
+          "id": "opt_1a",
+          "questionId": "q_1",
+          "text": "Accept all writes on both sides and resolve conflicts with timestamps",
+          "isCorrect": false,
+          "orderIndex": 0
+        },
+        {
+          "id": "opt_1b",
+          "questionId": "q_1",
+          "text": "Reject writes on the minority partition to prevent conflicting updates",
+          "isCorrect": true,
+          "orderIndex": 1
+        },
+        {
+          "id": "opt_1c",
+          "questionId": "q_1",
+          "text": "Automatically double the replication factor across all alive nodes",
+          "isCorrect": false,
+          "orderIndex": 2
+        },
+        {
+          "id": "opt_1d",
+          "questionId": "q_1",
+          "text": "Shut down the entire distributed cluster until the physical link recovers",
+          "isCorrect": false,
+          "orderIndex": 3
+        }
+      ],
+      "createdAt": "2026-10-14T06:43:17.462Z",
+      "updatedAt": "2026-10-14T06:43:17.462Z"
+    },
+    {
+      "id": "q_2",
+      "deckId": "deck_demo_distributed_sys",
+      "prompt": "In the Raft consensus algorithm, how does a candidate node prevent split-vote deadlocks during leader elections?",
+      "explanation": "Raft uses randomized election timeouts (e.g. 150ms-300ms) for each node so that typically a single follower times out first, increments the term, and collects votes before other nodes wake up.",
+      "topic": "Consensus & Raft Protocol",
+      "difficulty": "hard",
+      "orderIndex": 1,
+      "options": [
+        {
+          "id": "opt_2a",
+          "questionId": "q_2",
+          "text": "By electing the node with the lowest IP address in the cluster",
+          "isCorrect": false,
+          "orderIndex": 0
+        },
+        {
+          "id": "opt_2b",
+          "questionId": "q_2",
+          "text": "By utilizing randomized election timeouts across nodes",
+          "isCorrect": true,
+          "orderIndex": 1
+        },
+        {
+          "id": "opt_2c",
+          "questionId": "q_2",
+          "text": "By requiring every candidate to communicate through an external Zookeeper coordinator",
+          "isCorrect": false,
+          "orderIndex": 2
+        },
+        {
+          "id": "opt_2d",
+          "questionId": "q_2",
+          "text": "By allowing multiple leaders to serve writes concurrently on distinct partitions",
+          "isCorrect": false,
+          "orderIndex": 3
+        }
+      ],
+      "createdAt": "2026-10-14T06:43:17.462Z",
+      "updatedAt": "2026-10-14T06:43:17.462Z"
+    },
+    {
+      "id": "q_3",
+      "deckId": "deck_demo_distributed_sys",
+      "prompt": "When adding 1 new cache server to a cluster of N existing cache servers using traditional modulo hashing (hash(key) % N), what fraction of keys typically need to be re-cached?",
+      "explanation": "With standard modulo hashing, changing N to N+1 alters the modulus result for nearly all keys (approx N/(N+1) ≈ 80-90%+ of keys), whereas Consistent Hashing only moves K/(N+1) keys.",
+      "topic": "Consistent Hashing & DHTs",
+      "difficulty": "hard",
+      "orderIndex": 2,
+      "options": [
+        {
+          "id": "opt_3a",
+          "questionId": "q_3",
+          "text": "Only 1/N of keys",
+          "isCorrect": false,
+          "orderIndex": 0
+        },
+        {
+          "id": "opt_3b",
+          "questionId": "q_3",
+          "text": "Almost all keys (approximately N / (N + 1))",
+          "isCorrect": true,
+          "orderIndex": 1
+        },
+        {
+          "id": "opt_3c",
+          "questionId": "q_3",
+          "text": "Zero keys, because caching is non-deterministic",
+          "isCorrect": false,
+          "orderIndex": 2
+        },
+        {
+          "id": "opt_3d",
+          "questionId": "q_3",
+          "text": "Exactly 50% of the key space",
+          "isCorrect": false,
+          "orderIndex": 3
+        }
+      ],
+      "createdAt": "2026-10-14T06:43:17.462Z",
+      "updatedAt": "2026-10-14T06:43:17.462Z"
+    },
+    {
+      "id": "q_4",
+      "deckId": "deck_demo_distributed_sys",
+      "prompt": "In distributed storage systems, what is the purpose of Vector Clocks?",
+      "explanation": "Vector clocks record the causal history of events across independent processes. By comparing vector clock vectors, the system can determine whether event A happened-before event B or if they are concurrent conflicts.",
+      "topic": "Vector Clocks & Logical Time",
+      "difficulty": "medium",
+      "orderIndex": 3,
+      "options": [
+        {
+          "id": "opt_4a",
+          "questionId": "q_4",
+          "text": "To synchronize GPS physical clock time down to microseconds",
+          "isCorrect": false,
+          "orderIndex": 0
+        },
+        {
+          "id": "opt_4b",
+          "questionId": "q_4",
+          "text": "To detect causal relationships and concurrent update conflicts",
+          "isCorrect": true,
+          "orderIndex": 1
+        },
+        {
+          "id": "opt_4c",
+          "questionId": "q_4",
+          "text": "To encrypt data packets in transit between data center regions",
+          "isCorrect": false,
+          "orderIndex": 2
+        },
+        {
+          "id": "opt_4d",
+          "questionId": "q_4",
+          "text": "To calculate the round-trip ping time to client web browsers",
+          "isCorrect": false,
+          "orderIndex": 3
+        }
+      ],
+      "createdAt": "2026-10-14T06:43:17.462Z",
+      "updatedAt": "2026-10-14T06:43:17.462Z"
+    },
+    {
+      "id": "q_5",
+      "deckId": "deck_demo_distributed_sys",
+      "prompt": "Why is Two-Phase Commit (2PC) considered a blocking protocol in distributed database transactions?",
+      "explanation": "If the coordinator crashes after participants vote \"YES\" in Phase 1 (Prepare), participants must hold local locks and cannot unilaterally commit or abort until the coordinator recovers.",
+      "topic": "Consistent Hashing & DHTs",
+      "difficulty": "medium",
+      "orderIndex": 4,
+      "options": [
+        {
+          "id": "opt_5a",
+          "questionId": "q_5",
+          "text": "Participants must block because network latency is always non-zero",
+          "isCorrect": false,
+          "orderIndex": 0
+        },
+        {
+          "id": "opt_5b",
+          "questionId": "q_5",
+          "text": "If the coordinator fails after participants prepare, participants cannot decide independently",
+          "isCorrect": true,
+          "orderIndex": 1
+        },
+        {
+          "id": "opt_5c",
+          "questionId": "q_5",
+          "text": "It requires locking all DNS records across global regions",
+          "isCorrect": false,
+          "orderIndex": 2
+        },
+        {
+          "id": "opt_5d",
+          "questionId": "q_5",
+          "text": "It prevents read-only transactions from ever finishing",
+          "isCorrect": false,
+          "orderIndex": 3
+        }
+      ],
+      "createdAt": "2026-10-14T06:43:17.462Z",
+      "updatedAt": "2026-10-14T06:43:17.462Z"
+    }
+  ],
+  "quizAttempts": [
+    {
+      "id": "att_1",
+      "userId": "user_demo_student_01",
+      "deckId": "deck_demo_distributed_sys",
+      "deckTitle": "Distributed Systems & Cloud Architecture",
+      "score": 3,
+      "totalQuestions": 5,
+      "percentage": 60,
+      "completedAt": "2026-10-12T06:43:17.462Z",
+      "timeSpentSeconds": 195,
+      "answers": [
+        {
+          "id": "ans_1",
+          "attemptId": "att_1",
+          "questionId": "q_1",
+          "selectedOptionId": "opt_1b",
+          "isCorrect": true,
+          "timeSpentSeconds": 30
+        },
+        {
+          "id": "ans_2",
+          "attemptId": "att_1",
+          "questionId": "q_2",
+          "selectedOptionId": "opt_2a",
+          "isCorrect": false,
+          "timeSpentSeconds": 45
+        },
+        {
+          "id": "ans_3",
+          "attemptId": "att_1",
+          "questionId": "q_3",
+          "selectedOptionId": "opt_3a",
+          "isCorrect": false,
+          "timeSpentSeconds": 50
+        },
+        {
+          "id": "ans_4",
+          "attemptId": "att_1",
+          "questionId": "q_4",
+          "selectedOptionId": "opt_4b",
+          "isCorrect": true,
+          "timeSpentSeconds": 35
+        },
+        {
+          "id": "ans_5",
+          "attemptId": "att_1",
+          "questionId": "q_5",
+          "selectedOptionId": "opt_5b",
+          "isCorrect": true,
+          "timeSpentSeconds": 35
+        }
+      ]
+    }
+  ],
+  "topicMasteries": [
+    {
+      "id": "tm_1",
+      "userId": "user_demo_student_01",
+      "topicName": "CAP Theorem & PACELC",
+      "masteryPercentage": 88,
+      "totalAnswered": 8,
+      "totalCorrect": 7,
+      "lastPracticedAt": "2026-10-12T06:43:17.462Z",
+      "updatedAt": "2026-10-14T06:43:17.462Z"
+    },
+    {
+      "id": "tm_2",
+      "userId": "user_demo_student_01",
+      "topicName": "Consensus & Raft Protocol",
+      "masteryPercentage": 45,
+      "totalAnswered": 6,
+      "totalCorrect": 3,
+      "lastPracticedAt": "2026-10-13T06:43:17.462Z",
+      "updatedAt": "2026-10-14T06:43:17.462Z"
+    },
+    {
+      "id": "tm_3",
+      "userId": "user_demo_student_01",
+      "topicName": "Consistent Hashing & DHTs",
+      "masteryPercentage": 50,
+      "totalAnswered": 6,
+      "totalCorrect": 3,
+      "lastPracticedAt": "2026-10-13T06:43:17.463Z",
+      "updatedAt": "2026-10-14T06:43:17.463Z"
+    },
+    {
+      "id": "tm_4",
+      "userId": "user_demo_student_01",
+      "topicName": "Vector Clocks & Logical Time",
+      "masteryPercentage": 80,
+      "totalAnswered": 5,
+      "totalCorrect": 4,
+      "lastPracticedAt": "2026-10-12T06:43:17.463Z",
+      "updatedAt": "2026-10-14T06:43:17.463Z"
+    }
+  ],
+  "shareLinks": [
+    {
+      "id": "share_1",
+      "deckId": "deck_demo_distributed_sys",
+      "shareToken": "dist-sys-cs301-shared",
+      "isActive": true,
+      "viewsCount": 14,
+      "createdAt": "2026-10-11T06:43:17.463Z"
+    }
+  ],
+  "passwordResetTokens": []
+}

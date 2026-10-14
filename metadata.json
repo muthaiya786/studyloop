@@ -1,0 +1,6 @@
+{
+  "name": "Study Loop",
+  "description": "AI-Powered Notes-to-Quiz & Smart Exam Planner SaaS. Upload notes, get a personalized revision plan, and practice adaptive quizzes.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
